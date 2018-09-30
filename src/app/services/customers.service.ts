@@ -8,14 +8,15 @@ import { ICustomer } from '../interfaces/customer.interface';
     providedIn: 'root',
 })
 export class CustomersService {
-    private notify = new ReplaySubject();
+    private notify: ReplaySubject<ICustomer[]>;
     private customers: Array<ICustomer>;
 
     constructor() {
         this.customers = [];
+        this.notify = new ReplaySubject();
     }
 
-    public init() {
+    private init(): void {
         const customers = localStorage.getItem(CUSTOMERS);
         this.customers = isJsonValid(customers) ? JSON.parse(customers) : [];
         this.notify.next(this.customers);
@@ -32,6 +33,7 @@ export class CustomersService {
         if (!customer) {
             return;
         }
+
         this.customers.push(customer);
         localStorage.setItem(CUSTOMERS, JSON.stringify(this.customers));
         this.notify.next(this.customers);
