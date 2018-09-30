@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomersService } from '../../../services/customers.service';
-import { AddressService } from '../../../services/address.service';
+import { CustomersService } from '../../services/customers.service';
+import { AddressService } from '../../services/address.service';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+    selector: 'app-create',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss']
 })
-export class RegisterComponent {
+export class CreateComponent {
     form: FormGroup;
 
     constructor(

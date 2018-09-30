@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { AuthModule } from './components/auth/auth.module';
+import { CreateModule } from './components/create/create.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +12,7 @@ import { AuthModule } from './components/auth/auth.module';
     ],
     imports: [
         BrowserModule,
-        AuthModule
+        CreateModule
     ],
     providers: [],
     bootstrap: [

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+import { CreateComponent } from './create.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
     declarations: [
-        RegisterComponent
+        CreateComponent
     ],
     imports: [
         ReactiveFormsModule,
         GooglePlaceModule,
     ],
     exports: [
-        RegisterComponent
+        CreateComponent
     ]
 })
-export class AuthModule {}
+export class CreateModule {}
