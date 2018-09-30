@@ -14,13 +14,13 @@ export class CustomersComponent implements OnInit {
         this.customers = [];
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.customersService.get().subscribe(customers => {
             this.customers = customers;
         });
     }
 
-    deleteCustomer(customer) {
+    deleteCustomer(customer): void {
         this.customersService.remove(customer);
     }
 }
