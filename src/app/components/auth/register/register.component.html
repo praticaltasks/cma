@@ -1,0 +1,14 @@
+<form class="d-flex flex-column border border-primary p-3" [formGroup]="form" (submit)="onSubmit()">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" formControlName="fullName"/>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email"/>
+    <label for="address">Address</label>
+    <div id="address" class="d-flex address-wrapper" formGroupName="address">
+        <input formControlName="street" placeholder="Street" class="d-flex flex-shrink-1"/>
+        <input formControlName="buildingNumber" type="number" placeholder="Building no." class="d-flex flex-shrink-1"/>
+        <input formControlName="zipCode" placeholder="ZIP" class="d-flex flex-shrink-1"/>
+        <input formControlName="city" placeholder="City" class="d-flex flex-shrink-1"/>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Register</button>
+</form>
