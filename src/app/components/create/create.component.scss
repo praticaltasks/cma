@@ -1,4 +1,14 @@
 :host {
+    input {
+        outline: none;
+
+        &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset;
+        }
+    }
+    .is-invalid {
+        border: 1px var(--danger) solid;
+    }
     .address-wrapper {
         input {
             min-width: 0;

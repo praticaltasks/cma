@@ -9,7 +9,8 @@ import { AddressService } from '../../services/address.service';
     styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-    form: FormGroup;
+    public form: FormGroup;
+    public hasFormErrors: boolean;
 
     constructor(
         private addressService: AddressService,
@@ -18,7 +19,7 @@ export class CreateComponent {
     ) {
         this.form = fb.group({
             fullName: ['', [Validators.required]],
-            email: ['', [Validators.required]],
+            email: ['', [Validators.required, Validators.email]],
             address: fb.group({
                 street: ['', [Validators.required]],
                 buildingNumber: ['', [Validators.required]],
@@ -26,9 +27,15 @@ export class CreateComponent {
                 zipCode: ['', [Validators.required]]
             })
         });
+
+        this.hasFormErrors = false;
     }
 
     onSubmit(): void {
+        if (this.form.invalid) {
+            this.hasFormErrors = true;
+            return;
+        }
         const addressForm = this.form.get('address').value;
         const address = `${addressForm['street']} ${addressForm['buildingNumber']}, ${addressForm['city']} ${addressForm['zipCode']}`;
         this.addressService.check(address)
