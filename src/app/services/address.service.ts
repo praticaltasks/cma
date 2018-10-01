@@ -11,7 +11,7 @@ export class AddressService {
         this.geocoder = new google.maps.Geocoder();
     }
 
-    check(address): Observable<any> {
+    public check(address): Observable<any> {
         return new Observable(observer => {
             this.geocoder.geocode({address}, (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
