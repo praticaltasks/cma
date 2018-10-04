@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomersService } from '../../services/customers.service';
 import { AddressService } from '../../services/address.service';
@@ -8,19 +8,21 @@ import { AddressService } from '../../services/address.service';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.scss']
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
     public form: FormGroup;
     public hasFormErrors: boolean;
 
     constructor(
         private addressService: AddressService,
         private customersService: CustomersService,
-        fb: FormBuilder
-    ) {
-        this.form = fb.group({
+        private fb: FormBuilder
+    ) {}
+
+    ngOnInit(): void {
+        this.form = this.fb.group({
             fullName: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
-            address: fb.group({
+            address: this.fb.group({
                 street: ['', [Validators.required]],
                 buildingNumber: ['', [Validators.required]],
                 city: ['', [Validators.required]],
